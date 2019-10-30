@@ -7,7 +7,7 @@ const userHelper = require('../utils/user');
 router.post('/', async (req, res) => {
     const isUserExist = await userHelper.isUserExist(req.body.email);
 
-    if(isUserExist) {
+    if (isUserExist) {
         res.send({
             type: 0,
             message: 'User already exist.'
@@ -19,13 +19,13 @@ router.post('/', async (req, res) => {
             email: req.body.email,
             password: md5(req.body.password)
         };
-    
-        await userModel.create(newUser).then( result => {
+
+        await userModel.create(newUser).then(result => {
             res.send({
                 type: 1,
                 message: 'User successfully registered.'
             });
-        }).catch( err => {
+        }).catch(err => {
             res.send({
                 type: 0,
                 message: err.toString()
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
         });
     }
 
-    
+
 
 });
 
