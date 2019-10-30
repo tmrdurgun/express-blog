@@ -2,10 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const registerRouter = require('./routes/register');
-const postRouter = require('./routes/post');
-const commentRouter = require('./routes/comment');
 
+/* Db connection */
 mongoose.connect(process.env.DB_URL,
     {
         useNewUrlParser: true,
@@ -16,13 +14,13 @@ mongoose.connect(process.env.DB_URL,
         console.log('Db connection failed: ' + err);
     });
 
+/* Accept json */
 app.use(express.json());
 
+/* Regiser Routes*/
+app.use('/', require('./routes'));
+
+/* Listen port */
 app.listen(process.env.PORT, () => {
     console.log('app started');
 });
-
-app.use('/register', registerRouter);
-app.use('/post', postRouter);
-app.use('/comment', commentRouter);
-

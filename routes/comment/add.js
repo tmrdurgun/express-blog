@@ -1,9 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const commentModel = require('../models/comment');
+const commentModel = require('../../models/comment');
 const { ObjectId: objectId } = require('mongodb');
 
-router.post('/add', async (req, res) => {
+module.exports = async (req, res) => {
     const newItem = {
         text: req.body.text,
         post: objectId(req.body.post)
@@ -22,6 +20,4 @@ router.post('/add', async (req, res) => {
             }
         );
     })
-});
-
-module.exports = router;
+};

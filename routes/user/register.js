@@ -1,10 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const userModel = require('../models/user');
+const userModel = require('../../models/user');
 const md5 = require('md5');
-const userHelper = require('../utils/user');
+const userHelper = require('../../utils/user');
 
-router.post('/', async (req, res) => {
+module.exports = async (req, res) => {
     const isUserExist = await userHelper.isUserExist(req.body.email);
 
     if (isUserExist) {
@@ -33,10 +31,4 @@ router.post('/', async (req, res) => {
         });
     }
 
-
-
-});
-
-
-
-module.exports = router;
+};

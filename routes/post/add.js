@@ -1,9 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const postModel = require('../models/post');
+const postModel = require('../../models/post');
 const { ObjectId: objectId } = require('mongodb');
 
-router.post('/add', async (req, res) => {
+module.exports = async (req, res) => {
     const newItem = {
         title: req.body.title,
         text: req.body.text,
@@ -23,6 +21,4 @@ router.post('/add', async (req, res) => {
             }
         );
     })
-});
-
-module.exports = router;
+};
