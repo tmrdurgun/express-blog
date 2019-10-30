@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const registerRouter = require('./routes/register');
 const postRouter = require('./routes/post');
+const commentRouter = require('./routes/comment');
 
 mongoose.connect(process.env.DB_URL,
     {
@@ -23,3 +24,5 @@ app.listen(process.env.PORT, () => {
 
 app.use('/register', registerRouter);
 app.use('/post', postRouter);
+app.use('/comment', commentRouter);
+
