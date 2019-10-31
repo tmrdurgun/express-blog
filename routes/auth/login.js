@@ -13,14 +13,14 @@ module.exports = async (req, res) => {
         );
 
         res.send({
-            type: 1,
+            status: 1,
             message: 'Login successful!',
             token: token
         });
     }).catch(err => {
         res.send(
             {
-                type: 0,
+                status: 0,
                 message: 'Login failed. ' + err.message
             }
         );

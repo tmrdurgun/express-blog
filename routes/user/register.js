@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
 
     if (isUserExist) {
         res.send({
-            type: 0,
+            status: 0,
             message: 'User already exist.'
         });
     } else {
@@ -20,12 +20,12 @@ module.exports = async (req, res) => {
 
         await userModel.create(newUser).then(result => {
             res.send({
-                type: 1,
+                status: 1,
                 message: 'User successfully registered.'
             });
         }).catch(err => {
             res.send({
-                type: 0,
+                status: 0,
                 message: err.toString()
             });
         });

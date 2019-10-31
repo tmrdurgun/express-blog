@@ -10,13 +10,13 @@ module.exports = async (req, res) => {
 
     await postModel.create(newItem).then(result => {
         res.send({
-            type: 1,
+            status: 1,
             message: 'New post added successfully.'
         })
     }).catch(err => {
         res.send(
             {
-                type: 0,
+                status: 0,
                 message: 'Post add failed. ' + err.message
             }
         );

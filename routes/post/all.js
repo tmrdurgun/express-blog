@@ -12,13 +12,13 @@ module.exports = async (req, res) => {
           }
     ]).then( data => {
         res.send({
-            type: 1,
+            status: 1,
             data: data
         })
     })
     .catch(err => {
         res.send({
-            type: 0,
+            status: 0,
             message: err.message
         })
     });

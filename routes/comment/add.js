@@ -9,13 +9,13 @@ module.exports = async (req, res) => {
 
     await commentModel.create(newItem).then(result => {
         res.send({
-            type: 1,
+            status: 1,
             message: 'Comment saved.'
         })
     }).catch(err => {
         res.send(
             {
-                type: 0,
+                status: 0,
                 message: 'Comment save failed. ' + err.message
             }
         );
