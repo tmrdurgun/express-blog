@@ -21,5 +21,5 @@ module.exports = async (req, res) => {
             type: 0,
             message: err.message
         })
-    });;
+    });
 }
