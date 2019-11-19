@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
+const routes = require('./routes');
 
 /* Db connection */
 mongoose.connect(process.env.DB_URL,
@@ -21,8 +22,8 @@ mongoose.set('useCreateIndex', true);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 
-/* Regiser Routes*/
-app.use('/', require('./routes'));
+/* init routes */
+routes.init(app);
 
 /* Listen port */
 app.listen(process.env.PORT, () => {

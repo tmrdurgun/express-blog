@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = async (req, res) => {
 
-    await userModel.find({ email: req.body.email, password: md5 }).then(result => {
+    await userModel.find({ email: req.body.email, password: md5(req.body.password) }).then(result => {
         // create jwt & send
         const token = jwt.sign(
             { email: result.email },
